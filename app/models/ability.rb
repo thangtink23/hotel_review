@@ -18,6 +18,7 @@ class Ability
     else
       can :manage, [User, Review, Comment, Replie, Like], user_id: user.id
       can [:show], [Motel, Review, Comment, Replie, User]
+      can [:add_my_list, :delete_my_list], [Motel]
     end
   end
 end

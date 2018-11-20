@@ -73,6 +73,9 @@ HotelEquip.create motel_id: 3, equipment_id: 3, price: 10
 HotelRoom.create motel_id: 3, room_id: 1, price: 5000
 HotelRoom.create motel_id: 3, room_id: 2, price: 5000
 HotelRoom.create motel_id: 3, room_id: 3, price: 5000
+
+
+
 #
 # HotelEquip.create motel_id: 4, equipment_id: 1, price: 30
 # HotelEquip.create motel_id: 4, equipment_id: 2, price: 20
@@ -119,6 +122,15 @@ end
 50.times do |n|
   comment = Comment.create({user_id: Faker::Number.within(1..10), review_id: Faker::Number.within(1..10), content: Faker::Lorem.paragraph(10)});
 end
+UserHotel.create user_id: 3, motel_id: 1
+UserHotel.create user_id: 3, motel_id: 2
+UserHotel.create user_id: 3, motel_id: 3
+UserHotel.create user_id: 1, motel_id: 1
+UserHotel.create user_id: 1, motel_id: 2
+UserHotel.create user_id: 1, motel_id: 3
+UserHotel.create user_id: 2, motel_id: 1
+UserHotel.create user_id: 2, motel_id: 2
+UserHotel.create user_id: 2, motel_id: 3
 users = User.all
 user  = users.first
 following = users[2..50]

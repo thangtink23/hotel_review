@@ -1,0 +1,48 @@
+<%= link_to motel_path(motel) do %>
+<div class="home-form ">
+  <div class = "col-md-4 ">
+  <% if motel.images? %>
+    <%= image_tag motel.images[0].url %>
+  <% else %>
+    <%= image_tag "default-hotel" %>
+  <% end %>
+  </div>
+  <div class = "home-form-top col-md-8">
+    <h1><%= motel.name %></h1>
+    <h2>
+      <% motel.level.to_i.times do  %>
+        <span class="glyphicon glyphicon-star "></span>
+      <% end %>
+      <% motel.blank_stars.to_i.times do  %>
+        <span class="glyphicon glyphicon-star-empty "></span>
+      <% end %>
+      ( <%= motel.reviews.count %> レビュー）
+    </h2>
+    <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <%= motel.address %></p>
+    <div class = "col-md-6">
+      <% if !motel.hotel_equips.blank? %>
+        <h4><span class="glyphicon glyphicon-lamp"></span><%= t "activerecord.attributes.equipment.name"%></h4>
+        <% motel.hotel_equips.limit(2).each do |equip| %>
+          <div class="col-md-4"><%= equip.equipment.name %></div>
+          <div class="col-md-8"><%= equip.price %> ¥</div>
+        <% end %>
+        <% if motel.hotel_equips.count > 2 %>
+          <p style = "color: #16a085">....尚 <%= motel.hotel_equips.count - 2 %> アメニテイある。</p>
+        <% end %>
+      <% end %>
+    </div>
+    <div class = "col-md-6" >
+      <% if !motel.hotel_rooms.blank? %>
+        <h4><span class="glyphicon glyphicon-list-alt"></span><%= t "activerecord.attributes.room.room_type" %></h4>
+        <% motel.hotel_rooms.limit(2).each do |room| %>
+          <div class="col-md-6"><%= room.room.room_type %></div>
+          <div class="col-md-6"><%= room.price %> ¥</div>
+        <% end %>
+        <% if motel.hotel_rooms.count > 2 %>
+          <p style = "color: #16a085">....尚 <%= motel.hotel_rooms.count - 2 %> ルムタイプある。</p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

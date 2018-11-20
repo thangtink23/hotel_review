@@ -1,5 +1,6 @@
 <%= render "slider", slider: @motel.images %>
-<div class="col-md-12 title">
+<div class="col-md-8">
+  <div class="col-md-12 title">
   <div class="name"><%= @motel.name %></div>
   <span><%= @motel.level %> ✩</span>
 </div>
@@ -19,6 +20,17 @@
 <div class="phone">
   <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> <%= @motel.phone %>
 </div>
+
+</div>
+<%if current_user.motels.exists?@motel.id %>
+  <div class="col-md-4 btn-my-list">
+    <%= link_to t("undo my list"), motel_delete_my_list_path(@motel) , cLass: "btn btn-info", method: :post %>
+  </div>
+<%else%>
+  <div class="col-md-4 btn-my-list">
+    <%= link_to t("Add to my list"), motel_add_my_list_path(@motel) , cLass: "btn btn-info", method: :post %>
+  </div>
+<%end%>
 
 <div id="MAIN" class="delineation">
   <% if @motel.hotel_rooms.count > 0 %>

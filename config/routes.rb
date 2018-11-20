@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     root "static_pages#home"
     resources :motels do
       resources :reviews
-    end
+      post "/add_my_list" , to: "motels#add_my_list"
+      post "/delete_my_list" , to: "motels#delete_my_list"
+    end 
     resources :rooms
     resources :equipments
     resources :users, only: [:index, :show, :update] do
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
     end
     post "/like", to: "reviews#like"
     get "/load_more", to: "motels#load_more"
+
     resources :relationships, only: [:create, :destroy]
     resources :reviews do
       resources :comments
@@ -22,5 +25,6 @@ Rails.application.routes.draw do
     resources :comments do
       resources :replies
     end
+
   end
 end
