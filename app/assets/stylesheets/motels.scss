@@ -44,3 +44,45 @@ body {
 .review-block-description{
 	font-size:13px;
 }
+.star-rating {
+  line-height:28px;
+  font-size:1.6em;
+}
+.star-rating-form {
+  line-height:28px;
+  font-size:1.6em;
+}
+
+.star-rating-form .fa-star{color: #F9A825;}
+
+.star-rating .fa-star{color: #F9A825;}
+
+.star-user{
+	margin-top: -40px;
+	margin-left: 17px;
+}
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+  font-size: 33px;
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #F9A825;
+  font-size: 33px;
+}

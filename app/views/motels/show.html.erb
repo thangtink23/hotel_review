@@ -42,22 +42,13 @@
           <h2 class="bold padding-bottom-7"><%= @motel.avarege_point %>
             <small>/ 5</small>
           </h2>
-          <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-          </button>
-          <% %>
-          <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-          </button>
-          <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-          </button>
-          <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-          </button>
-          <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-          </button>
+          <div class="col-md-3 star-user">
+              <div class="star_home_page stars-outer">
+                <div class="stars-inner" style="width: <%= @motel.avarege_point*20 %>%"></div>
+              </div>
+            </div>
+
+          
         </div>
       </div>
       <div class="col-sm-6" style="margin:0; padding:0;float: left;padding-left: 10px;">
@@ -130,17 +121,9 @@
       </div>
     </div>
   </div>
-  <% unless current_user.nil? %>
-    <% if current_user.motels.exists? @motel.id %>
-      <div class="col-md-4 btn-my-list">
-        <%= link_to t("undo_my_list"), motel_delete_my_list_path(@motel), cLass: "btn btn-primary", method: :post %>
-      </div>
-    <% else %>
-      <div class="col-md-4 btn-my-list">
-        <%= link_to t("add_my_list"), motel_add_my_list_path(@motel), cLass: "btn btn-primary", method: :post %>
-      </div>
-    <% end %>
-  <% end %>
+  <div id="bookmark_id">
+    <%= render "motels/bookmark", motel: @motel  %>
+  </div>
   <div id="MAIN" class="delineation">
   </div>
 
